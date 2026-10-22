@@ -3,7 +3,11 @@
 **Paste your syllabi. See which weeks of the term will pile up, and get start dates that keep every day manageable.
 Everything happens in your browser.**
 
-Live demo: https://hyunsikparker.github.io/crunchmap/
+Live demo: https://hyunsikparker.github.io/crunchmap/ · Video walkthrough (1 min 47 s, captions):
+https://hyunsikparker.github.io/crunchmap/demo.html
+
+The video is recorded from the live page by `scripts/demo.mjs` (Playwright), which first checks every number the
+narration quotes against the page. The narration is a synthetic voice (Qwen3-TTS, run locally).
 
 ## The problem
 
