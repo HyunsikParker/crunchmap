@@ -190,7 +190,7 @@ code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-si
 .compare .after { color: var(--plan); }
 .compare .of { font-size: 1rem; font-weight: 500; color: var(--muted); }
 
-.cap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; align-items: start; }
+.cap { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 20px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; align-items: start; }
 .cap-field { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
 .cap-field label { font-weight: 650; }
 .cap-field .fine { flex-basis: 100%; }
