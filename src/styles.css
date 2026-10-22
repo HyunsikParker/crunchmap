@@ -248,7 +248,7 @@ code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-si
 .starts-intro { margin: -2px 0 10px; }
 .start-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .start-list li { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; align-items: center; }
-.start-list li.is-moved { border-left: 4px solid var(--plan); }
+.start-list li.is-moved .start-date { color: var(--plan); }
 .start-date { display: grid; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.2; }
 .start-date span { font-size: 0.76rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
 .start-title { margin: 0; font-weight: 650; }
