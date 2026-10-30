@@ -267,16 +267,16 @@ export default function App() {
           <h2 id="results-title" className="sr-only">Your semester</h2>
           <p className="sr-only" aria-live="polite">{announce}</p>
           {!plan || included.length === 0 ? (
-            <EmptyState termError={termError} />
+            <EmptyState termError={termError} hasItems={items.length > 0} />
           ) : (
             <>
               <Verdict plan={plan} crunchWeeks={crunchWeeks} items={included} onPickWeek={pickWeek} />
               <CapControl plan={plan} onChange={(cap) => update({ cap })} onDownload={download} note={exportNote} />
               <WeekMap plan={plan} items={included} open={openWeek} setOpen={setOpenWeek} />
               <StartList plan={plan} items={included} />
-              <DeadlineTable items={items} onEdit={editItem} />
             </>
           )}
+          {items.length > 0 && <DeadlineTable items={items} onEdit={editItem} />}
         </section>
       </main>
 
@@ -334,14 +334,16 @@ function CourseCard({ course, index, found, onChange, onRemove }: {
   )
 }
 
-function EmptyState({ termError }: { termError: string }) {
+function EmptyState({ termError, hasItems }: { termError: string; hasItems: boolean }) {
   return (
     <div className="empty">
       <div className="empty-map" aria-hidden="true">
         {[0.15, 0.3, 0.2, 0.55, 0.25, 0.9, 0.35, 0.2, 0.6, 1].map((v, k) => <span key={k} className={`heat-${Math.min(4, Math.floor(v * 5))}`} />)}
       </div>
-      <h3>Your semester map will appear here</h3>
-      <p>{termError ? 'Set the term dates first.' : 'Paste the schedule of at least one course. Each deadline needs a date on its line.'}</p>
+      <h3>{hasItems ? 'No items selected for the plan' : 'Your semester map will appear here'}</h3>
+      <p>{termError ? 'Set the term dates first.' : hasItems
+        ? 'Select an item in the deadline table below to see your plan.'
+        : 'Paste the schedule of at least one course. Each deadline needs a date on its line.'}</p>
     </div>
   )
 }

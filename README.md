@@ -84,13 +84,14 @@ browser's local storage so it survives a reload; "Clear everything" removes it.
   not dates, item kinds, grading-line weights, the sample semester, a cap-respecting plan that never schedules work
   outside an item's window, and the `.ics` output (75-octet line folding without splitting characters, escaping, stable
   UIDs).
-- 3 browser tests (`npm run test:e2e`, Playwright on the production build): the sample flow end to end including the
+- 5 browser tests (`npm run test:e2e`, Playwright on the production build): the sample flow end to end including the
   calendar download, keyboard use of the chart, an automated accessibility scan with axe (no violations), no console
   errors, no network requests, pasting a new course and editing it, state kept across a reload, and no horizontal
-  scrolling at phone width.
+  scrolling at phone width. Two regression cases check that excluded deadlines remain editable after a reload and that
+  reading-only courses can be added to the plan.
 - The calendar file downloaded by the browser test is parsed again with the Python
   [icalendar](https://pypi.org/project/icalendar/) library, an independent implementation
-  (`python3 scripts/check_ics.py test-results/crunchmap-sample.ics`): 55 all-day events (39 deadlines and 16 start
+  (`uv run --no-project --with icalendar python scripts/check_ics.py test-results/crunchmap-sample.ics`): 55 all-day events (39 deadlines and 16 start
   events with 9 am reminders) and no duplicate UIDs.
 
 ## Run it locally
@@ -112,8 +113,8 @@ npm run test:e2e   # browser tests on the production build
 ## Credits and disclosure
 
 - Built during LaunchPad Hacks 2026 (started October 22, 2026). No pre-existing project code.
-- **AI assistance:** built with Claude (Anthropic), an AI coding assistant, which wrote the code, the tests and this
-  README.
+- **AI assistance:** Claude (Anthropic) wrote the original code, tests and README. Codex (OpenAI) fixed the all-excluded deadline table and added two browser regression tests and the related
+  documentation on October 30, 2026.
 - Libraries: React, Vite and TypeScript; Vitest, Testing Library, Playwright and axe-core for tests.
 - The sample courses, dates and weights are made up.
 
